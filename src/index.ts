@@ -72,7 +72,7 @@ async function publishMostRecentBuild(accessToken: string, user: string, siteId:
 const argv = yargs
     .usage(
         '$0 [options]',
-        true,
+        'Deploy the most recent publish on Netlify and keep auto publishes locked.',
         /* tslint:disable-next-line:no-shadowed-variable */
         yargs => {
           return yargs
