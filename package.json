@@ -15,7 +15,7 @@
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json"
   },
-  "author": "blakeduncan14",
+  "author": "Storyblocks",
   "repository": {
     "type": "git",
     "url": "https://github.com/Footage-Firm/netlify-locked-publish"
