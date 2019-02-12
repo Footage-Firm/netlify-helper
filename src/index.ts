@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import axios from 'axios';
 import * as yargs from 'yargs';
 
@@ -64,7 +66,8 @@ async function publishMostRecentBuild(accessToken: string, user: string, siteId:
     await publishDeploy(axiosInstance, siteId, deployId, accessToken);
     await lockAutoPublishes(axiosInstance, siteId, deployId, accessToken);
   } catch (err) {
-    console.error(err);
+    console.error(err.response ? err.response.statusText : err.message);
+    process.exit(1);
   }
 }
 
@@ -78,14 +81,17 @@ const argv = yargs
           return yargs
               .option('token', {
                 alias: 't',
+                demandOption: true,
                 describe: 'Access token for Netlify, likely stored in CircleCI env variables',
               })
               .option('user', {
                 alias: 'u',
+                demandOption: true,
                 describe: 'The user associated with the given access token',
               })
               .option('site', {
                 alias: 's',
+                demandOption: true,
                 describe: 'A Netlify site that the given user has access to',
               });
         },
