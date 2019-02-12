@@ -65,7 +65,6 @@ async function publishMostRecentBuild(accessToken: string, user: string, siteId:
     const deployId = await getNetlifyDeployId(axiosInstance, siteId, accessToken);
     await publishDeploy(axiosInstance, siteId, deployId, accessToken);
     await lockAutoPublishes(axiosInstance, siteId, deployId, accessToken);
-    process.exit(0);
   } catch (err) {
     console.error(err.response ? err.response.statusText : err.message);
     process.exit(1);
